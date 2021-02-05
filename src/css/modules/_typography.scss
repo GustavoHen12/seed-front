@@ -1,0 +1,104 @@
+@import "_colors.scss";
+
+$font-primary: "Open Sans", Helvetica, Arial, sans-serif;
+$font-secondary: "Lato", Helvetica, Arial, sans-serif;
+
+:root {
+    // font family
+    --font-primary: "Open Sans", Helvetica, Arial, sans-serif;
+    --font-secondary: "Lato", Helvetica, Arial, sans-serif;
+  
+    // font size
+    --text-base-size: 1em; // body font-size
+    --text-scale-ratio: 1.2; // multiplier used to generate the type scale values 👇
+    
+    // line-height
+    --body-line-height: 1.4;
+    --heading-line-height: 1.2;
+    
+    // capital letters - used in combo with the lhCrop mixin
+    --font-primary-capital-letter: 1;
+    --font-secondary-capital-letter: 1;
+  
+    // unit - don't modify unless you want to change the typography unit (e.g., from Em to Rem units)
+    --text-unit: 1em; // if not Em units → --text-unit: var(--text-base-size);
+  }
+  
+  :root, * {
+    // type scale
+    --text-xs: calc((var(--text-unit) / var(--text-scale-ratio)) / var(--text-scale-ratio));
+    --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+    --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+    --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+    --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+    --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
+    --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+    --text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
+  }
+  
+body {
+  font-family: var(--font-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-secondary);
+  font-weight: 900;
+}
+
+h2{
+    font-size: 22pt;
+}
+
+  
+// font family
+.font-primary { font-family: var(--font-primary); }
+.font-secondary { font-family: var(--font-secondary); }
+
+.text {
+    text-align: justify;
+    font-size: 15pt;
+}
+
+.title1 {
+  text-align: right;
+  font-size: 20pt;
+  font-weight: 700;
+}
+
+.content1{
+  text-align: right;
+  font-size: 13pt;
+  font-weight: 500;
+}
+
+.titleCard {
+  text-align: left;
+  font-size: 13pt;
+  font-weight: 600;
+}
+
+.contentCard{
+  text-align: left;
+  font-size: 8.5pt;
+  font-weight: 600;
+}
+
+.semibold{
+  text-align: left;
+  font-weight: 600;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+@mixin link{
+    color: $font-color;
+    font-weight: 700;
+    font-family:  var(--font-secondary);
+    text-decoration: none;
+
+    &:hover{
+      color: #626262;
+    }
+}

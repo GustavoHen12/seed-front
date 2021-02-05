@@ -1,0 +1,74 @@
+//https://medium.com/codeartisan/breakpoints-and-media-queries-in-scss-46e8f551e2f2
+//https://docs.microsoft.com/pt-br/windows/uwp/design/layout/screen-sizes-and-breakpoints-for-responsive-design
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 640px;
+
+// Small tablets (portrait view)
+$screen-md-min: 641px;
+
+// Tablets and small desktops
+$screen-lg-min: 1024px;
+
+// Ultrawide display
+$screen-xl-min: 1310px;
+
+// Small devices
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+}
+ 
+// Medium devices
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+ 
+ // Large devices
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+}
+
+// Ultra Large devices
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+}
+
+.w-sm{
+    max-width: #{$screen-sm-min};
+}
+
+.w-md{
+    max-width: #{$screen-md-min};
+}
+
+.w-lg{
+    min-width: $screen-lg-min;
+    max-width: $screen-lg-min;
+}
+
+.w-xl{
+    @include xl{
+        min-width: $screen-xl-min;
+        max-width: $screen-xl-min;
+    }
+}
+
+@media (min-width: $screen-md-min){
+    /*visibilities according to the platform*/
+	.showOnMobile{display:none; opacity:0;}
+	.showOnDesktop{display:inherit; opacity:1;}
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (max-width: $screen-md-min) {
+	.showOnMobile{display:inherit; opacity:1;}
+	.showOnDesktop{display:none; opacity:0;}
+}
