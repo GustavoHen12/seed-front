@@ -1,133 +1,135 @@
 <template>
-    <div id='header' class='headerContainer is-transparent is-fixed-top'>
-        <div class='header'>
-            <div class='logoSection'>
-                <router-link to='/'>
-                    <img
-                        class='logoImage'
-                        alt='BeHope logo'
-                        src='../../assets/logo/logo.png'
+    <div id='header' class='wraper is-transparent is-fixed-top'>
+        <div class='headerContainer'>
+            <div class='header'>
+                <div class='logoSection'>
+                    <router-link to='/'>
+                        <img
+                            class='logoImage'
+                            alt='BeHope logo'
+                            src='../../assets/logo/logo.png'
+                        >
+                    </router-link>
+                    <div
+                        v-if='userLogged'
+                        class='headerLinks showOnDesktop'
                     >
-                </router-link>
+                        <router-link to='/'>
+                            HOME
+                        </router-link>
+                        <router-link to='/'>
+                            PROJETOS
+                        </router-link>
+                    </div>
+                </div>
+
                 <div
-                    v-if='userLogged'
+                    v-if='!userLogged'
                     class='headerLinks showOnDesktop'
                 >
                     <router-link to='/'>
                         HOME
                     </router-link>
                     <router-link to='/'>
-                        PROJETOS
+                        SOBRE
+                    </router-link>
+                    <router-link to='/'>
+                        CONTATOS
                     </router-link>
                 </div>
-            </div>
 
-            <div
-                v-if='!userLogged'
-                class='headerLinks showOnDesktop'
-            >
-                <router-link to='/'>
-                    HOME
-                </router-link>
-                <router-link to='/'>
-                    SOBRE
-                </router-link>
-                <router-link to='/'>
-                    CONTATOS
-                </router-link>
-            </div>
-
-            <div class='rightSection'>
-                <g-btn
-                    class='icon'
-                    color='primary'
-                    icon
-                >
-                    <v-icon large>
-                        $iconBag
-                    </v-icon>
-                </g-btn>
-                <div v-if='userLogged'>
-                    <v-menu
-                        v-model='menu'
-                        :close-on-content-click='false'
-                        :nudge-width='200'
-                        rounded='0'
-                        offset-y
+                <div class='rightSection'>
+                    <g-btn
+                        class='icon'
+                        color='primary'
+                        icon
                     >
-                        <template #activator='{ on, attrs }'>
+                        <v-icon large>
+                            $iconBag
+                        </v-icon>
+                    </g-btn>
+                    <div v-if='userLogged'>
+                        <v-menu
+                            v-model='menu'
+                            :close-on-content-click='false'
+                            :nudge-width='200'
+                            rounded='0'
+                            offset-y
+                        >
+                            <template #activator='{ on, attrs }'>
+                                <g-btn
+                                    class='showOnDesktop'
+                                    v-bind='attrs'
+                                    type='text'
+                                    xlarge
+                                    v-on='on'
+                                >
+                                    PERFIL
+                                </g-btn>
+                                <g-btn
+                                    class='showOnMobile icon'
+                                    icon
+                                    v-bind='attrs'
+                                    v-on='on'
+                                >
+                                    <v-icon color='black' large>
+                                        mdi-account-outline
+                                    </v-icon>
+                                </g-btn>
+                            </template>
+                            <v-card>
+                                <v-list flat>
+                                    <v-list-item-group>
+                                        <v-list-item @click='history'>
+                                            <v-list-item-title>
+                                                Histórico
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                        <v-list-item @click='logout'>
+                                            <v-list-item-title>
+                                                Logout
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </v-list-item-group>
+                                </v-list>
+                            </v-card>
+                        </v-menu>
+                    </div>
+                    <div v-else>
+                        <g-btn
+                            class='showOnMobile icon'
+                            icon
+                        >
+                            <v-icon color='black' large>
+                                mdi-account-outline
+                            </v-icon>
+                        </g-btn>
+                        <div class='showOnDesktop'>
                             <g-btn
-                                class='showOnDesktop'
-                                v-bind='attrs'
                                 type='text'
                                 xlarge
-                                v-on='on'
+                                :_to='{name: "Login"}'
                             >
-                                PERFIL
+                                LOGIN
                             </g-btn>
-                            <g-btn
-                                class='showOnMobile icon'
-                                icon
-                                v-bind='attrs'
-                                v-on='on'
-                            >
-                                <v-icon color='black' large>
-                                    mdi-account-outline
-                                </v-icon>
-                            </g-btn>
-                        </template>
-                        <v-card>
-                            <v-list flat>
-                                <v-list-item-group>
-                                    <v-list-item @click='history'>
-                                        <v-list-item-title>
-                                            Histórico
-                                        </v-list-item-title>
-                                    </v-list-item>
-                                    <v-list-item @click='logout'>
-                                        <v-list-item-title>
-                                            Logout
-                                        </v-list-item-title>
-                                    </v-list-item>
-                                </v-list-item-group>
-                            </v-list>
-                        </v-card>
-                    </v-menu>
-                </div>
-                <div v-else>
+                        </div>
+                    </div>
                     <g-btn
                         class='showOnMobile icon'
                         icon
+                        @click='() => {expand = !expand}'
                     >
-                        <v-icon color='black' large>
-                            mdi-account-outline
+                        <v-icon
+                            large
+                            color='black'
+                        >
+                            mdi-menu
                         </v-icon>
                     </g-btn>
-                    <div class='showOnDesktop'>
-                        <g-btn
-                            type='text'
-                            xlarge
-                            :_to='{name: "Login"}'
-                        >
-                            LOGIN
-                        </g-btn>
-                    </div>
                 </div>
-                <g-btn
-                    class='showOnMobile icon'
-                    icon
-                    @click='() => {expand = !expand}'
-                >
-                    <v-icon
-                        large
-                        color='black'
-                    >
-                        mdi-menu
-                    </v-icon>
-                </g-btn>
             </div>
+            <navMobile :enable='expand' />
         </div>
-        <navMobile :enable='expand' />
     </div>
 </template>
 
@@ -154,7 +156,7 @@
                 window.addEventListener("scroll", function(){
                     var header = document.getElementById("header");
                     var nav_classes = header.classList;
-                    if(document.documentElement.scrollTop >= 150) {
+                    if(document.documentElement.scrollTop >= 100) {
                         if (nav_classes.contains("shrink") === false) {
                             nav_classes.toggle("shrink");
                         }
@@ -194,6 +196,7 @@
         margin-right: auto;
     }
 }
+
 .header{
   display: flex;
   flex-direction: row;
@@ -215,9 +218,29 @@
   }
 }
 
-shrink {
-  padding: 0.3rem;
-  background: gray;
+.is-transparent{
+    background-color: transparent;
+}
+
+.is-fixed-top{
+    position: fixed; /* Fixed position - sit on top of the page */
+    top: 0;
+    width: 100vw;
+    transition: 0.2s;
+    z-index: 20;
+}
+
+.shrink {
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(126deg, rgba(255,255,255,1) 0%, rgba(248,248,248,1) 28%, rgba(242,242,242,1) 100%);
+    background: -webkit-linear-gradient(126deg, rgba(255,255,255,1) 0%, rgba(248,248,248,1) 28%, rgba(242,242,242,1) 100%);
+    background: linear-gradient(126deg, rgba(255,255,255,1) 0%, rgba(248,248,248,1) 28%, rgba(242,242,242,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f2f2f2",GradientType=1);
+    -webkit-box-shadow: 2px -2px 25px -2px rgba(0,0,0,0.62);
+    box-shadow: 2px -2px 25px -2px rgba(0,0,0,0.62);
+    @include md{
+        padding-top: .5;
+    }
 }
 
 .logoImage{

@@ -125,7 +125,7 @@
     padding: .5em .8em;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
 
     p {
         margin-bottom: 0;

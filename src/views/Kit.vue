@@ -1,10 +1,12 @@
 <template>
     <div class='catalogKit'>
         <g-header />
-        <div class='page main'>
-            <kit-info />
-            <productCatalog />
-        </div>
+        <cnt-container>
+            <div class='page main'>
+                <kit-info />
+                <productCatalog />
+            </div>
+        </cnt-container>
         <g-footer />
     </div>
 </template>
