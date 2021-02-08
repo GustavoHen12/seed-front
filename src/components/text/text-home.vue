@@ -34,6 +34,10 @@
         font-size: 11pt;
     }
 
+    h1{
+        font-size: 25pt;
+    }
+
     @include md{
         width: 75%;
         margin-left: 5em;

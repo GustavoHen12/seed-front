@@ -1,5 +1,5 @@
 <template>
-    <cnt-container>
+    <cnt-container class='ma-0'>
         <g-header class='mobile' />
         <div class='content'>
             <div class='formContainer'>

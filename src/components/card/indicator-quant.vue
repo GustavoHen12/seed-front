@@ -1,17 +1,26 @@
 <template>
-    <div class='indicator'>
-        <div
-            v-for='(item, index) in itens'
-            :key='item'
-        >
-            <v-icon
-                small
-                :style='style(index)'
+    <v-tooltip top>
+        <template #activator='{ on, attrs }'>
+            <div
+                class='indicator'
+                v-bind='attrs'
+                v-on='on'
             >
-                $iconCircle
-            </v-icon>
-        </div>
-    </div>
+                <div
+                    v-for='(item, index) in itens'
+                    :key='item'
+                >
+                    <v-icon
+                        small
+                        :style='style(index)'
+                    >
+                        $iconCircle
+                    </v-icon>
+                </div>
+            </div>
+        </template>
+        <span>Falta {{have}} de {{of}} para completar o próximo kit</span>
+    </v-tooltip>
 </template>
 
 <script>
