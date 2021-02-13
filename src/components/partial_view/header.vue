@@ -39,15 +39,7 @@
                 </div>
 
                 <div class='rightSection'>
-                    <g-btn
-                        class='icon'
-                        color='primary'
-                        icon
-                    >
-                        <v-icon large>
-                            $iconBag
-                        </v-icon>
-                    </g-btn>
+                    <bag-button class='icon' />
                     <div v-if='userLogged'>
                         <v-menu
                             v-model='menu'
@@ -135,11 +127,13 @@
 
 <script>
     import navMobile from '@/components/buttons/navMenuMobile.vue'
+    import bagButton from '@/components/buttons/bag.vue'
 
     export default {
         name:"Header",
         components:{
-            navMobile
+            navMobile,
+            bagButton,
         },
         data: function(){
             return {expand : false}
@@ -156,7 +150,7 @@
                 window.addEventListener("scroll", function(){
                     var header = document.getElementById("header");
                     var nav_classes = header.classList;
-                    if(document.documentElement.scrollTop >= 100) {
+                    if(document.documentElement.scrollTop >= 50) {
                         if (nav_classes.contains("shrink") === false) {
                             nav_classes.toggle("shrink");
                         }
@@ -250,17 +244,6 @@
         height: 4em;
         width: auto;
         margin-right: 2em;
-    }
-}
-
-.iconsHeader{
-    height: auto;
-    width: auto;
-    display: flex;
-    .icon{
-        height: auto;
-        width: 2em;
-        margin-right: 1em;
     }
 }
 
