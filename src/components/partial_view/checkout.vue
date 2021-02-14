@@ -16,11 +16,12 @@
                     </div>
                 </transition>
 
-                <transition-group name='fade'>
-                    <div>
-                        <checkout-product :product='products[0]' />
-                    </div>
-                </transition-group>
+                <div>
+                    <checkout-product :product='products[0].product' />
+                </div>
+
+                <!-- <transition-group name='fade'>
+                </transition-group> -->
 
                 <!--
                 <hr v-if='cartContent.length !== 0'>

@@ -2,7 +2,7 @@
     <v-btn
         color='primary'
         light
-        tile
+        :tile='!notTile'
 
         :to='_to'
 
@@ -52,6 +52,10 @@
                 default: undefined,
             },
             xlarge: {
+                type: Boolean,
+                default: false
+            },
+            notTile: {
                 type: Boolean,
                 default: false
             },

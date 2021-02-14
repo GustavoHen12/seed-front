@@ -15,10 +15,12 @@ import gRow from '@/components/layout/general-row.vue'
 import gCol from '@/components/layout/general-column.vue'
 import gCnt from '@/components/layout/general-container.vue'
 import gBtn from '@/components/buttons/btn-general.vue'
+import gBtnIcon from '@/components/buttons/btn-icon.vue'
 
 Vue.component('GHeader', headerWithoutLogin)
 Vue.component('GFooter', footerCustom)
 Vue.component('GBtn', gBtn)
+Vue.component('GBtnIcon', gBtnIcon)
 Vue.component('GRow', gRow)
 Vue.component('GCol', gCol)
 Vue.component('GCnt', gCnt)
