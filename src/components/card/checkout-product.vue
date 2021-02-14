@@ -17,7 +17,7 @@
             </div>
             <div class='info-row mt-4'>
                 <div class='quantity-cnt'>
-                    <g-btn-icon icon='mdi-plus' @click='add' />
+                    <g-btn-icon icon='mdi-minus' @click='minus' />
                     <div class='quantity-input'>
                         <v-text-field
                             v-model='quantity'
@@ -26,7 +26,7 @@
                             hide-details
                         />
                     </div>
-                    <g-btn-icon icon='mdi-minus' @click='minus' />
+                    <g-btn-icon icon='mdi-plus' @click='add' />
                 </div>
                 <g-btn not-tile icon @click='remove'>
                     <v-icon>mdi-trash-can-outline</v-icon>
@@ -79,7 +79,7 @@
 .cnt{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 
     width: 100%;

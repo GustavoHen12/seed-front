@@ -202,6 +202,7 @@
   padding-right: 1em;
   @include md{
       padding-top: 1em;
+      padding-bottom: 1em;
       padding-left: 1.5em;
       padding-right: 1.5em;
 
@@ -234,6 +235,9 @@
     box-shadow: 2px -2px 25px -2px rgba(0,0,0,0.62);
     @include md{
         padding-top: .5;
+        .logoImage{
+            height: 3em;
+        }
     }
 }
 
@@ -244,6 +248,7 @@
         height: 4em;
         width: auto;
         margin-right: 2em;
+        transition: 0.2s;
     }
 }
 

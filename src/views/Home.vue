@@ -29,6 +29,7 @@
             <!-- KITS -->
             <div class='section-2'>
                 <text-home
+                    class='ml-0'
                     :title='textHome.kits.title'
                 />
                 <catalog-kits-home />

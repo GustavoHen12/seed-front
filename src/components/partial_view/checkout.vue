@@ -161,7 +161,7 @@
         padding: 2em 1.5em;
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         align-content: left;
     }
 
