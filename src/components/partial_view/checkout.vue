@@ -19,20 +19,16 @@
                 <div>
                     <checkout-product :product='products[0].product' />
                 </div>
+                <hr>
 
-                <!-- <transition-group name='fade'>
-                </transition-group> -->
+                <div class='price-row'>
+                    <h4> TOTAL </h4>
+                    <h4>{{price}} </h4>
+                </div>
 
-                <!--
-                <hr v-if='cartContent.length !== 0'>
-                <div v-if='cartPrice != undefined' class='row justify-content-between' style='background:#7dcf85;padding:10px 10px 10px 10px'>
-                    <div class='flex-column pl-3'>
-                        <h4>Total</h4>
-                    </div>
-                    <div class='flex-column pr-3'>
-                        <h4>${{cartPrice}}</h4>
-                    </div>
-                </div> -->
+                <g-btn class='mt-12' @click='donate'>
+                    DOAR
+                </g-btn>
             </div>
         </div>
 
@@ -60,11 +56,16 @@
                 sideBar: 'cart',
                 modal: 'modal off',
                 products: [],
+                totalPrice: '120.30',
             }
         },
         computed: {
             cartPrice () {
                 return 10
+            },
+            price: function () {
+                const value = this.totalPrice;
+                return `R$ ${value.replace('.', ',')}`
             }
         },
         mounted: function () {
@@ -83,6 +84,9 @@
                     this.modal = 'modal'
                     this.load()
                 }
+            },
+            donate: function () {
+                console.log('doar');
             },
         }
     }
@@ -136,6 +140,11 @@
         transition-duration: 0.4s;
 
         background-color: $background-color;
+
+        @include md{
+            width: 450px;
+            height: 100%;
+        }
     }
     .cart.on {
         transform: translateX(0);
@@ -166,5 +175,12 @@
         p{
             text-align: center;
         }
+    }
+
+    .price-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 </style>

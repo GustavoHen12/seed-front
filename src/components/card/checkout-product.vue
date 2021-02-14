@@ -3,6 +3,7 @@
         <v-img
             height='80px'
             width='80px'
+            max-width='100px'
             :src='product.img'
         />
         <div class='product-data'>
@@ -25,9 +26,9 @@
                             hide-details
                         />
                     </div>
-                    <g-btn-icon icon='mdi-minus' @click='add' />
+                    <g-btn-icon icon='mdi-minus' @click='minus' />
                 </div>
-                <g-btn not-tile icon @click='showPage'>
+                <g-btn not-tile icon @click='remove'>
                     <v-icon>mdi-trash-can-outline</v-icon>
                 </g-btn>
             </div>
@@ -57,13 +58,24 @@
         },
         methods: {
             add: function () {
-                console.log('add');
+                this.quantity += 1;
             },
+            minus: function () {
+                if (this.quantity === 1){
+                    this.remove();
+                }
+                this.quantity -= 1;
+            },
+            remove: function () {
+                console.log(remove);
+            }
         },
     }
 </script>
 
 <style scoped lang='scss'>
+@use "@/css/modules/_breakpoints.scss";
+@import "@/css/global.scss";
 .cnt{
     display: flex;
     flex-direction: row;
@@ -72,7 +84,8 @@
 
     width: 100%;
     height: auto;
-    max-height: 5em;
+    max-height: 7em;
+    margin-bottom: 1.5em;
 }
 .info-row{
     display: flex;
@@ -83,11 +96,17 @@
 .product-data{
     margin-left: 1em;
     width: auto;
+    @include md{
+        width: 100%;
+    }
 }
 
 .product-name{
     overflow-wrap: break-word;
     width: 50%;
+    @include md{
+        width: 60%;
+    }
 }
 
 .product-price{
