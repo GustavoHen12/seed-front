@@ -93,16 +93,10 @@
         },
         data:function (){
             return {
-                textHome: {},
+                textHome: Services.getHomeInfo(),
             }
         },
-        mounted: function () {
-            this.load()
-        },
         methods: {
-            load: function () {
-                this.textHome = Services.getHomeInfo();
-            },
             routerCatalog: function () {
                 this.$router.push('catalog');
             }

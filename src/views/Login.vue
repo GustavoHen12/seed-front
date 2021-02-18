@@ -115,6 +115,7 @@
                     if (this.user.username && this.user.password) {
                         this.$store.dispatch('auth/login', this.user).then(
                             () => {
+                                this.$store.dispatch('loadBag');
                                 this.$router.push('/');
                             },
                             error => {

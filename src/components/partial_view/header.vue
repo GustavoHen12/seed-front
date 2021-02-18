@@ -136,7 +136,10 @@
             bagButton,
         },
         data: function(){
-            return {expand : false}
+            return {
+                expand : false,
+                menu: false,
+            }
         },
         computed: {
             userLogged() {

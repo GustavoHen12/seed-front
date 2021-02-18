@@ -2,27 +2,13 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import { auth } from './auth.module';
+import { bag } from './bag.module';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    auth
+    auth,
+    bag,
   }
 });
-
-// import Vue from 'vue'
-// import Vuex from 'vuex'
-
-// Vue.use(Vuex)
-
-// export default new Vuex.Store({
-//   state: {
-//   },
-//   mutations: {
-//   },
-//   actions: {
-//   },
-//   modules: {
-//   }
-// })

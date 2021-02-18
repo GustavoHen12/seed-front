@@ -4,14 +4,17 @@ const API_URL = 'http://127.0.0.1:8000/api/auth/';
 
 class AuthService {
   login(user) {
+    console.log(user);
     return axios
       .post(API_URL, {
         username: user.username,
         password: user.password
       })
       .then(response => {
-        if (response.data.accessToken) {
-          localStorage.setItem('user', JSON.stringify(response.data));
+        console.log(response);
+        if (response.data.access) {
+           console.log(response.data);
+           localStorage.setItem('user', JSON.stringify(response.data));
         }
 
         return response.data;

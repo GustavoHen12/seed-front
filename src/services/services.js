@@ -1,11 +1,16 @@
 import axios from 'axios';
-// import authHeader from '@/auth_services/auth-header';
+import authHeader from '@/auth_services/auth-header';
 
 const API_URL = 'http://127.0.0.1:8000/kits/';
+const API_URL_PRODUCTS = 'http://127.0.0.1:8000/products/';
 
 class Services {
     getProducts(id){
         return axios.get(API_URL + `kit-products/?kit=${id}`)
+    }
+    getBag(){
+        const header = authHeader();
+        return axios.get(API_URL_PRODUCTS + `bag/`, { headers: header })
     }
     getKits(){
         return axios.get(API_URL + 'kit/')

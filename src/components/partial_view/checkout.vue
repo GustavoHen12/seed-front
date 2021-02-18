@@ -16,7 +16,7 @@
                     </div>
                 </transition>
 
-                <div>
+                <div v-if='products.length > 0'>
                     <checkout-product :product='products[0].product' />
                 </div>
                 <hr>
@@ -72,8 +72,8 @@
             this.load();
         },
         methods: {
-            load: function () {
-                Services.getProducts(2).then(response => this.products = response.data);
+            load: async function () {
+                await Services.getProducts(2).then(response => this.products = response.data);
             },
             showPage: function () {
                 if (this.sideBar === 'cart on') {
