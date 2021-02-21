@@ -98,9 +98,10 @@
         },
         methods: {
             addBag: function () {
-                this.$store.dispatch("addBag", {
+                this.$store.dispatch("setBag", {
                     product: this.product,
-                    kit: this._kitId
+                    kit: this._kitId,
+                    op: 'add',
                 });
             },
         }

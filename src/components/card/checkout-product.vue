@@ -69,13 +69,19 @@
         },
         methods: {
             add: function () {
-                this.$store.dispatch("addBag", {
+                this.$store.dispatch("setBag", {
                     product: this.product,
+                    op: 'add'
                 });
             },
             minus: function () {
                 if (this.quantity === 1){
                     this.remove();
+                } else {
+                    this.$store.dispatch("setBag", {
+                        product: this.product,
+                        op: 'remove'
+                    });
                 }
                 //this.quantity -= 1;
             },
