@@ -1,15 +1,12 @@
 <template>
     <div class='grid'>
-        <!-- <div
+        <div
             v-for='item in productList'
             :key='item.url'
-        > -->
-        <div
-            v-for='index in 10'
-            :key='index'
         >
             <card-product
-                :_product='productList[0].product'
+                :_product='item.product'
+                :_kit-id='item.kit.id'
             />
         </div>
     </div>

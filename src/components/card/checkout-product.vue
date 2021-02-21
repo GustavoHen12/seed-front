@@ -20,7 +20,7 @@
                     <g-btn-icon icon='mdi-minus' @click='minus' />
                     <div class='quantity-input'>
                         <v-text-field
-                            v-model='quantity'
+                            v-model='inBag'
                             solo
                             dense
                             hide-details
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+    import _ from 'lodash';
+
     export default {
         name:"CheckoutProduct",
         props: {
@@ -44,27 +46,38 @@
                 type: Object,
                 default: null,
             },
+            quantity: {
+                type: Number,
+                default: 0,
+            },
         },
         data () {
             return {
-                quantity: 0,
+                inBag: this.quantity,
             }
         },
         computed: {
             price: function () {
-                const value = this.product.price;
+                const value = JSON.parse(JSON.stringify(this.product.price));
                 return `R$ ${value.replace('.', ',')}`
-            }
+            },
+        },
+        watch: {
+            quantity (value) {
+                this.inBag = value;
+            },
         },
         methods: {
             add: function () {
-                this.quantity += 1;
+                this.$store.dispatch("addBag", {
+                    product: this.product,
+                });
             },
             minus: function () {
                 if (this.quantity === 1){
                     this.remove();
                 }
-                this.quantity -= 1;
+                //this.quantity -= 1;
             },
             remove: function () {
                 console.log(remove);

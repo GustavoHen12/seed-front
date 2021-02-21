@@ -29,12 +29,24 @@
         },
         data () {
             return {
-                productsCount: 10,
+                // productsCount: 0,
             }
+        },
+        computed: {
+            productsCount: function () {
+                return this.$store.getters.bagLength;
+            },
+        },
+        mounted: function () {
+            //this.$store.bag.bagItens.splice(0);
+            this.loadBag();
         },
         methods: {
             showCheckout() {
                 this.$refs.checkout.showPage()
+            },
+            loadBag: function () {
+                this.$store.dispatch('loadBag');
             }
         }
     }

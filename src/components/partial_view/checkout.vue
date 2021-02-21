@@ -15,9 +15,13 @@
                         <p>Sua cesta esta vazia, adicione alguns itens</p>
                     </div>
                 </transition>
-
                 <div v-if='products.length > 0'>
-                    <checkout-product :product='products[0].product' />
+                    <div v-for='item in products' :key='item.product.id'>
+                        <checkout-product
+                            :product='item.product'
+                            :quantity='item.quantity'
+                        />
+                    </div>
                 </div>
                 <hr>
 
@@ -42,8 +46,8 @@
 <script>
     import imgAnimated from '@/components/image/img-animated.vue'
     import CheckoutProduct from '../card/checkout-product.vue'
-
-    import Services from "@/services/services.js"
+    import {mapGetters} from 'vuex';
+    //import Services from "@/services/services.js"
 
     export default {
         name: 'Checkout',
@@ -56,24 +60,36 @@
                 sideBar: 'cart',
                 modal: 'modal off',
                 products: [],
-                totalPrice: '120.30',
             }
         },
         computed: {
             cartPrice () {
                 return 10
             },
+            ...mapGetters({
+                priceTotal: 'totalPrice'
+            }),
             price: function () {
-                const value = this.totalPrice;
-                return `R$ ${value.replace('.', ',')}`
-            }
+                const value = JSON.parse(JSON.stringify(this.priceTotal));
+                const valueStr = value.toFixed(2).toString();
+                return `R$ ${valueStr.replace('.', ',')}`
+            },
+            productList: {
+                get () {
+                    return this.$store.state.bag.bagItens;
+                },
+                set (value) {
+                    console.log(value);
+                },
+            },
         },
         mounted: function () {
             this.load();
         },
         methods: {
             load: async function () {
-                await Services.getProducts(2).then(response => this.products = response.data);
+                this.products = this.productList;
+                // await Services.getProducts(2).then(response => this.products = response.data);
             },
             showPage: function () {
                 if (this.sideBar === 'cart on') {

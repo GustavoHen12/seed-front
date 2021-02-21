@@ -31,12 +31,12 @@
 
             <v-img
                 height='200px'
-                :src='_product.img'
+                :src='product.img'
             />
 
             <v-card-title>
                 <div class='description'>
-                    {{_product.name}}
+                    {{product.name}}
                 </div>
             </v-card-title>
 
@@ -52,6 +52,7 @@
                     fab
                     outlined
                     small
+                    @click='addBag'
                 >
                     <v-icon x-large>
                         $iconPlus
@@ -77,19 +78,32 @@
             _product: {
                 type: Object,
                 default: null,
-            }
+            },
+            _kitId: {
+                type: Number,
+                default: null,
+            },
         },
         data: function () {
             return {
                 count: 3,
+                product: this._product,
             };
         },
         computed: {
             price: function () {
-                const value = this._product.price;
+                const value = JSON.parse(JSON.stringify(this.product.price));
                 return `R$ ${value.replace('.', ',')}`
             }
         },
+        methods: {
+            addBag: function () {
+                this.$store.dispatch("addBag", {
+                    product: this.product,
+                    kit: this._kitId
+                });
+            },
+        }
     };
 </script>
 

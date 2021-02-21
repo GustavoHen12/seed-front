@@ -12,6 +12,19 @@ class Services {
         const header = authHeader();
         return axios.get(API_URL_PRODUCTS + `bag/`, { headers: header })
     }
+    addBag(body){
+        const header = authHeader();
+        return axios({
+            method: 'post',
+            url: API_URL_PRODUCTS + `bag/`,
+            headers: header,
+            data: {
+                kit: body.kit,
+                product: body.product,
+                quantity: body.quantity
+            }
+        });
+    }
     getKits(){
         return axios.get(API_URL + 'kit/')
     }

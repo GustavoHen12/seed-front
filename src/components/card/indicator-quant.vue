@@ -64,8 +64,6 @@
                 var rN = parseInt((((rL-r)/this.have)*index)+r).toString(16);
                 var style = "color: #"+rN+rN+rN+"; margin-right: -.3em";
 
-                console.log(style);
-
                 return style;
             }
         }
