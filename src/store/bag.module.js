@@ -2,6 +2,8 @@ import Services from "@/services/services.js"
 import BagBodyRequest from "@/models/bagBodyRequest.js"
 import Vue from 'vue';
 
+import StoreUtil from "./util.js"
+
 //TODO: bug para adicionar produtos de diferentes kist com mesmo id
 
 export const bag = {
@@ -51,7 +53,7 @@ export const bag = {
             Services.addBag(params).then(
                 response => {
                     const product = response.data;
-                    const index = state.bagItens.findIndex(item => item.product.id === product.product.id)
+                    let index = state.bagItens.findIndex(item => item.product.id === product.product.id)
                     if (index === -1){
                         index = state.bagItens.length;
                     }
@@ -72,6 +74,23 @@ export const bag = {
                 index: index,
                 product: product,
             })
+        },
+
+        deleteFromBag({ commit, state, rootState }, params){
+            const bodyRequest = StoreUtil.createBagBodyRequest(state, params);
+
+            console.log(bodyRequest);
+
+            if (rootState.auth.status.loggedIn){
+                Services.deleteBag(bodyRequest).then(
+                    response => {
+                        commit('removeBag', response.data);
+                    },
+                );
+            } else{
+                bodyRequest.product = params.product;
+                commit('removeBag', bodyRequest);
+            }
         },
     },
     getters : {
@@ -110,8 +129,8 @@ export const bag = {
             )
         },
         removeBag(state, product){
-            const index = state.bagItems.findIndex(x => x.product === product)
-            return state.bagItems.splice(index, 1)
+            const index = state.bagItens.findIndex(x => x.product === product)
+            return state.bagItens.splice(index, 1)
         },
     },
 }

@@ -83,10 +83,11 @@
                         op: 'remove'
                     });
                 }
-                //this.quantity -= 1;
             },
             remove: function () {
-                console.log(remove);
+                this.$store.dispatch("deleteFromBag", {
+                    product: this.product
+                });
             }
         },
     }
