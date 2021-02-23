@@ -11,9 +11,7 @@ class AuthService {
         password: user.password
       })
       .then(response => {
-        console.log(response);
         if (response.data.access) {
-           console.log(response.data);
            localStorage.setItem('user', JSON.stringify(response.data));
         }
 
@@ -23,6 +21,27 @@ class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+  }
+
+  refresh(user) {
+    return axios({
+        method: 'post',
+        url: API_URL+'refresh/',
+        header: "Content-Type: application/json",
+        data: {
+            refresh: user.refresh
+        }
+    })
+    .then(response => {
+        if (response.data.access) {
+            localStorage.setItem('user', JSON.stringify({
+                refresh: user.refresh,
+                access: response.data.access
+            }));
+        }
+
+        return response.data;
+    });
   }
 
 //   register(user) {
