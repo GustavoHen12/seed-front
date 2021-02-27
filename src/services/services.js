@@ -1,8 +1,10 @@
 import axios from 'axios';
 import authHeader from '@/auth_services/auth-header';
 
-const API_URL = 'http://127.0.0.1:8000/kits/';
-const API_URL_PRODUCTS = 'http://127.0.0.1:8000/products/';
+// const API_URL = 'http://127.0.0.1:8000/kits/';
+// const API_URL_PRODUCTS = 'http://127.0.0.1:8000/products/';
+const API_URL = 'https://behope-api.herokuapp.com/kits/';
+const API_URL_PRODUCTS = 'https://behope-api.herokuapp.com/products/';
 
 class Services {
     getProducts(id){

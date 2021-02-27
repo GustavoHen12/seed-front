@@ -40,7 +40,7 @@
                         xlarge
                         @click='routerCatalog'
                     >
-                        <div class='mt-1'>
+                        <div>
                             Ver mais
                         </div>
                         <template #icon>
