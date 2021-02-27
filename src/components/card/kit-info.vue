@@ -6,29 +6,29 @@
                     class='showOnDesktop'
                     max-height='10em'
                     widht='auto'
-                    :src='kitInfo.img'
+                    :src='kitInfo.imgUrl || require("@/assets/img/defaultImage.png")'
                 />
 
                 <div class='content'>
                     <p class='bold card-title'>
-                        {{kitInfo.name}}
+                        {{kitInfo.name || ""}}
                     </p>
 
                     <p class='bold card-subtitle'>
-                        {{kitInfo.projectName}}
+                        {{kitInfo.project == null ? "" : kitInfo.project.name}}
                     </p>
 
                     <p class='semibold showOnDesktop'>
-                        {{kitInfo.bio}}
+                        {{kitInfo.description || ""}}
                     </p>
 
                     <hr class='showOnDesktop'>
 
                     <p class='bold card-status'>
-                        {{kitInfo.status}}
+                        {{aux.status}}
                     </p>
                     <p class='semibold'>
-                        cestas arrecadadas da meta de {{kitInfo.goal}}
+                        cestas arrecadadas da meta de {{kitInfo.goal || 0}}
                     </p>
                 </div>
             </div>
@@ -37,19 +37,23 @@
 </template>
 
 <script>
-    // import AnimatedContainer from '@/components/layout/animated-container.vue';
-    //services
-    // import Products from "@/services/products.js"
+    import Services from "@/services/services.js"
 
     export default {
-        name:"CatalogKit",
+        name:"KitInfo",
         components:{
             // AnimatedContainer,
+        },
+        props: {
+            _kitId: {
+                type: Number,
+                default: null,
+            },
         },
         data: function () {
             return {
                 productsList: null,
-                kitInfo:{
+                aux:{
                     completed: 30,
                     goal: 100,
                     name: 'Cesta Nome',
@@ -58,6 +62,7 @@
                     img: 'https://images.unsplash.com/photo-1612018072665-11526a70079d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
                     bio: 'Lorem ipsum dolor sit  amet, consectetur  adipiscing elit. Sed maximus a dolor non  dictum.'
                 },
+                kitInfo: null,
             }
         },
         mounted: function () {
@@ -65,7 +70,8 @@
         },
         methods: {
             load: function () {
-            // this.projectsList = Products.get().then(response => this.productsList = response.products);
+                const kitId = this.$route.params.id;
+                Services.getKitInfo(kitId).then(response => this.kitInfo = response.data);
             },
         }
     }

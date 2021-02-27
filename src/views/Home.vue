@@ -52,7 +52,7 @@
                 </div>
             </div>
             <!-- PROJETOS -->
-            <div class='section'>
+            <div class='section mb-0'>
                 <div class='textBtn-cnt'>
                     <text-home
                         :title='textHome.projects.title'

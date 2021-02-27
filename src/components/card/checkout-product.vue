@@ -4,7 +4,7 @@
             height='80px'
             width='80px'
             max-width='100px'
-            :src='product.img'
+            :src='product.imgUrl || require("@/assets/img/defaultImage.png")'
         />
         <div class='product-data'>
             <div class='info-row'>

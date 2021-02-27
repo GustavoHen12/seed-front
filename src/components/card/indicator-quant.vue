@@ -19,7 +19,7 @@
                 </div>
             </div>
         </template>
-        <span>Falta {{have}} de {{of}} para completar o próximo kit</span>
+        <span>Falta {{of - (have % of)}} para completar o próximo kit</span>
     </v-tooltip>
 </template>
 
@@ -46,7 +46,9 @@
             //with the "have" quantity is created
             //a list to be used in "v-for"
             itens: function(){
-                var index = this.have;
+                // computed how many itens to next kit
+                var donated = this.have % this.of;
+                var index = this.of - donated;
                 var list = [];
                 while(index > 0){
                     list.push(index);

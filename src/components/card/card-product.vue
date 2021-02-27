@@ -23,15 +23,15 @@
                         <cardInfo />
                     </v-dialog>
                     <indicator
-                        :have='3'
-                        :of='5'
+                        :have='_donated'
+                        :of='_inKit'
                     />
                 </div>
             </v-card-actions>
 
             <v-img
                 height='200px'
-                :src='product.img'
+                :src='product.imgUrl || require("@/assets/img/defaultImage.png")'
             />
 
             <v-card-title>
@@ -80,6 +80,14 @@
                 default: null,
             },
             _kitId: {
+                type: Number,
+                default: null,
+            },
+            _donated: {
+                type: Number,
+                default: null,
+            },
+            _inKit: {
                 type: Number,
                 default: null,
             },

@@ -122,7 +122,7 @@
     import Services from "@/services/services.js"
 
     export default {
-        name: 'Home',
+        name: 'Tutorial',
         components: {
             textHome,
             imgAnimated,

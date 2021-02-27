@@ -7,6 +7,8 @@
             <card-product
                 :_product='item.product'
                 :_kit-id='item.kit.id'
+                :_donated='item.donated'
+                :_in-kit='item.in_kit'
             />
         </div>
     </div>

@@ -17,7 +17,7 @@
             </div>
         </div>
         <div v-if='_kit.img != null' :class='{"imgContent" : !directionVertical, "imgContentVert":directionVertical}'>
-            <img-card-kit :src='_kit.img' />
+            <img-card-kit :src='_kit.imgUrl || require("@/assets/img/defaultImage.png")' />
             <!-- <img class='img' :src='_kit.img'> -->
         </div>
     </animated-container>

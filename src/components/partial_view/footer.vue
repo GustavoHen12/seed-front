@@ -7,7 +7,9 @@
             justify='center'
             no-gutters
         >
-            <img src='../../assets/logo/ghsbLogo.png'>
+            <a href='http://www.inf.ufpr.br/ghsb19/'>
+                <img src='../../assets/logo/ghsbLogo.png'>
+            </a>
         </v-row>
     </v-footer>
     <!-- <div class='footer'>
@@ -41,7 +43,7 @@
     border-top: solid 1px #B8B8B8;
     color: white;
     text-align: center;
-
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

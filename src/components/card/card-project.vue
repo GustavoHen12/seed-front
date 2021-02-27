@@ -13,7 +13,7 @@
                 <div>
                     <v-img
                         :src='_kit.img'
-                        :lazy-src='_kit.img'
+                        :lazy-src='_kit.imgUrl || require("@/assets/img/defaultImage.png")'
                         max-width='450'
                         max-height='300'
                     >

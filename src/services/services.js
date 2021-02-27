@@ -41,6 +41,9 @@ class Services {
     getKits(){
         return axios.get(API_URL + 'kit/')
     }
+    getKitInfo(id){
+        return axios.get(API_URL + `kit/${id}`)
+    }
     getHomeInfo(){
         return {
             ourMission: {
