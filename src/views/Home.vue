@@ -14,7 +14,7 @@
                         <g-btn
                             class='mt-12'
                             type='secundary'
-                            @click='routerCatalog'
+                            @click='openPage("Tutorial")'
                         >
                             COMO FUNCIONA ?
                         </g-btn>
@@ -61,7 +61,6 @@
                     <g-btn
                         class='mt-12'
                         type='secundary'
-                        @click='routerCatalog'
                     >
                         CONHECER MAIS
                     </g-btn>
@@ -97,8 +96,8 @@
             }
         },
         methods: {
-            routerCatalog: function () {
-                this.$router.push('catalog');
+            openPage: function (page) {
+                this.$router.push(page);
             }
         }
     }

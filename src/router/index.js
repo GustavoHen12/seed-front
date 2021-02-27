@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Catalog from '../views/Catalog.vue'
 import Kit from '../views/Kit.vue'
 import Login from '../views/Login.vue'
+import Tutorial from '../views/Tutorial.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/tutorial',
+    name: 'Tutorial',
+    component: Tutorial
   },
   {
     path: '/about',

@@ -57,6 +57,57 @@ class Services {
             }
         }
     }
+    getTutorialInfo(){
+        return {
+            characters: [
+                {
+                    title: "Projeto",
+                    description: "Cada projeto representa uma igreja, projeto social ou ONG",
+                    img: "project1.svg",
+                },
+                {
+                    title: "Cesta",
+                    description: "Cada projeto possui as cestas, que são kits com os produtos a serem doados",
+                    img: "kit1.svg",
+                },
+                {
+                    title: "Usuário",
+                    description: "Os usuários são aqueles que podem acessar as cestas e realizar as doações",
+                    img: "user1.svg",
+                },
+            ],
+            advantages: {
+                project: [
+                    {
+                        title: "Visibiliade",
+                        description: "De mais visibilade para sua campanha de doação sendo online",
+                    },
+                    {
+                        title: "Mais por menos",
+                        description: "Possibilidade de negociar diretamente com o fornecedor",
+                    },
+                    {
+                        title: "Controle",
+                        description: "Tenha fácil acesso a quantidade de itens doados",
+                    }
+                ],
+                users: [
+                    {
+                        title: "Informações",
+                        description: "Tenha total acesso as informações sobre os fornecedores",
+                    },
+                    {
+                        title: "Saiba o que doar",
+                        description: "Doe aquilo que a campanha realmente precisa",
+                    },
+                    {
+                        title: "Flexibilidade",
+                        description: "Doe em qualquer lugar, a qualquer hora e qualquer quatidade",
+                    }
+                ]
+            }
+        }
+    }
 }
 
 export default new Services();

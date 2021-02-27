@@ -33,6 +33,7 @@ export const auth = {
         AuthService.refresh(state.user).then(
             response => {
                 commit('refreshSucess', response.access);
+                dispatch('autoRefresh', state.user);
                 return Promise.resolve(response);
             },
             error => {
@@ -40,7 +41,6 @@ export const auth = {
                 return Promise.reject(error)
             }
         );
-        dispatch('autoRefresh', state.user)
     },
     // TODO: Refactor
     // This auto refresh I get here https://stackoverflow.com/questions/55747521/how-to-implement-auto-refresh-in-client-sidevue-js

@@ -114,6 +114,16 @@
     //card
     import tutorialCard from '@/components/card/tutorialCard.vue'
 
+    // Vantagens
+    // Projetos
+    //     - Mais por menos: possibilidade de negociar diretamente com o fornecedor
+    //     - De mais visibilade para sua campanha de doação online
+    //     - Tenha fácil acesso a quantidade de itens doados
+
+    // Usuário
+    //     - Tenha total acesso as informações sobre os fornecedores
+    //     - Doe aquilo que a campanha realmente precisa
+    //     - Doe em qualquer lugar, a qualquer hora e qualquer quatidade
 
     export default {
         name: 'Sobre',
