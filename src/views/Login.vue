@@ -52,6 +52,14 @@
                             {{errorMessage}}
                         </v-alert>
                     </div>
+                    <v-alert
+                        class='mt-12'
+                        elevation='12'
+                        type='info'
+                    >
+                        <p>Usuário: JohnDoe</p>
+                        <p>Senha: password2004</p>
+                    </v-alert>
                     <div
                         v-if='loading'
                         class='loading'
