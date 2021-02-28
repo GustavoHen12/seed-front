@@ -1,51 +1,32 @@
-# frontend
+# Seed [Frontend]
 
-[prototipo](https://www.figma.com/file/eXz78buSrvEoI1Xnm3KVH9/Seed?node-id=0%3A1)
+> Imagine estar em uma loja virtual, mas ao invés de comprar algo para você, é possível doar para aqueles que mais precisam. Isso é o Behope.
 
-## Regras gerais
+Um site que tem como proposta ser, basicamente, um marketplace para doação.
 
-### component
+[Backend](https://github.com/GustavoHen12/seed-back)
 
-- Importar:
+## Com o quê ?
+O frontend do site foi feito inteiramente utilizando [Vue](https://github.com/vuejs/vue)
 
-``` js
++ `Vuex` `Vuerouter` `Vuetify` `JWT` `Eslintrc` `scss`
 
-import pageInWork from '@/components/view/pg-inwork.vue'
+## Instalação
+```bash
+git clone https://github.com/GustavoHen12/seed-front.git
+cd ./seed-front
 
+npm install
+npm run serve
 ```
 
-- Cada componente deve estar dentro de uma pasta que representa a sua "classe". Exemplo: buttons, layout, general, partial_views
+## TODO
 
-- nomenclatura: _"[tipo]-[nome].vue"_. Ex: btn-main.vue
-
-### scss
-
-[structure-sass](http://thesassway.com/beginner/how-to-structure-a-sass-project)
-
-``` txt
-css/
-|
-|-- modules/              # Common modules
-|   |-- _all.scss         # Include to get all modules
-|   |-- _utility.scss     # Module name
-|   |-- _colors.scss      # Etc...
-|   ...
-|
-|-- partials/             # Partials
-|   |-- _base.sass        # imports for all mixins + global project variables
-|   |-- _buttons.scss     # buttons
-|   |-- _reset.scss       # reset
-|   ...
-|
-`-- main.scss            # primary Sass file
-```
-
-### Tamanho da tela (responsividade)
-
-- [Microsoft - design responsivo](https://docs.microsoft.com/pt-br/windows/uwp/design/layout/screen-sizes-and-breakpoints-for-responsive-design)
-
-## Regras de Responsabilidade
-
-- Cabe ao filho de readaptar dependendo do contexto em que esta inserido
-
-- Cabe ao pai passar o contexto ao filho, alem de posicionalo corretamente
+- [ ] Melhorar ligação para API local e produção
+- [ ] Criar a tela de projetos
+- [ ] Animações de espera
+- [ ] Mensagens de erro
+- [ ] Tela checkout
+- [ ] Corrigir bug de responsividade na home
+- [ ] Melhorar responsividade na tela de tutorial
+- [ ] Refatorar card de produtos
